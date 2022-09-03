@@ -3,5 +3,5 @@ const people = require('./peopleRoute')
 
 module.exports = app => {
     app.use(bodyParser.json())
-    app.use(people);
+    app.use(people)
 }
