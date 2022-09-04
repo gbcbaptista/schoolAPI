@@ -68,6 +68,18 @@ class PeopleController {
             return res.status(500).json(error.message)
         }
     }
+
+    static async createRegistration(req, res) {
+        const { studentId } = req.params
+        const newRegistration = { ...req.body, student_id: Number(studentId)}
+        try {
+            const newRegistrationCreated = await database.Registrations.create(newRegistration);
+            res.status(200).json(newRegistrationCreated)
+
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 
