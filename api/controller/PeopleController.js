@@ -96,6 +96,16 @@ class PeopleController {
             res.status(500).json(error.message)
         }
     }
+
+    static async deleteRegistration(req, res) {
+        const { studentId, registrationId } = req.params
+        try {
+            await database.Registrations.destroy( { where: { id: Number(registrationId) } });
+            res.status(201).json({ message: `registration ${registrationId} deleted` })  
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 

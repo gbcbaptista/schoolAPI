@@ -12,5 +12,6 @@ router.delete('/people/:id', PeopleController.deletePerson)
 router.get('/people/:studentId/registration/:registrationId', PeopleController.getARegistration)
 router.post('/people/:studentId/registration', PeopleController.createRegistration)
 router.put('/people/:studentId/registration/:registrationId', PeopleController.updateRegistration)
+router.delete('/people/:studentId/registration/:registrationId', PeopleController.deleteRegistration)
 
 module.exports = router
