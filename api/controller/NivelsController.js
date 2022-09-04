@@ -8,7 +8,6 @@ class NivelsController {
         } catch (error) {
             return res.status(500).json(error.message);
         }
-        
     }
 
     static async getNivelById(req, res) {

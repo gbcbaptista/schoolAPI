@@ -19,7 +19,7 @@ module.exports = {
       class_id:{
         allowNull: false,
         type: Sequelize.INTEGER,
-        reference: { model: 'Classes', key: 'id' }
+        reference: { model: 'StudentGroups', key: 'id' }
       },
       createdAt: {
         allowNull: false,
