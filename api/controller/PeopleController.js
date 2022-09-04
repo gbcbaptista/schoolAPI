@@ -53,6 +53,21 @@ class PeopleController {
             res.status(500).json(error.message)
         }
     }
+
+    static async getARegistration(req, res) {
+        const { studentId, registrationId } = req.params
+        try {
+            const registration = await database.Registrations.findOne( {
+                 where: { 
+                    id: Number(registrationId),
+                    student_id: Number(studentId)
+                },
+                })
+            res.status(200).json(registration)
+        } catch (error) {
+            return res.status(500).json(error.message)
+        }
+    }
 }
 
 

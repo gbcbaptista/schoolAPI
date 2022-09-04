@@ -14,7 +14,7 @@ class NivelsController {
         const { id } = req.params
         try {
             const nivel = await database.Nivels.findOne( { where: { id: Number(id) }})
-            res.status(200).json(Nivel)
+            res.status(200).json(nivel)
         } catch (error) {
             return res.status(500).json(error.message)
         }

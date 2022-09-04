@@ -3,7 +3,7 @@ const database = require('../models');
 class StudentGroupsController {
     static async getAllStudentGroups(req, res) {
         try {
-            allStudentGroups = await database.StudentGroups.findAll()
+            const allStudentGroups = await database.StudentGroups.findAll()
             return res.status(200).json(allStudentGroups);
         } catch (error) {
             return res.status(500).json(error.message);
@@ -32,7 +32,7 @@ class StudentGroupsController {
         }
     }
 
-    static async updateCStudentGroup(req, res) {
+    static async updateStudentGroup(req, res) {
         const { id } = req.params
         const updateData = req.body
         try {
