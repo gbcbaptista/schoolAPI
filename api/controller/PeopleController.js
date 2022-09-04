@@ -80,6 +80,22 @@ class PeopleController {
             res.status(500).json(error.message)
         }
     }
+
+    static async updateRegistration(req, res) {
+        const { studentId, registrationId } = req.params
+        const newData = req.body
+        try {
+            await database.Registrations.update(newData, { 
+                where: { 
+                    id: Number(registrationId),
+                    student_id: Number(studentId)
+                } })
+            const updatedRegistration = await database.Registrations.findOne( { where: { id: Number(registrationId) } })
+            res.status(201).json(updatedRegistration);
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 
