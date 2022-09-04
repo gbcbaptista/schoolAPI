@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       Registrations.belongsTo(models.People)
-      Registrations.belongsTo(models.Classes)
+      Registrations.belongsTo(models.StudentGroups)
     }
   }
   Registrations.init({
