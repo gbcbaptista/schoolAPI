@@ -53,6 +53,15 @@ class PeopleController {
             res.status(500).json(error.message)
         }
     }
+    static async restorePerson( req, res ) {
+        const { id } = req.params
+        try {
+            await database.People.restore( { where: { id: Number(id) } });
+            return res.status(200).json({ message: `Person id: ${id} was restored!` })
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 
     static async getARegistration(req, res) {
         const { studentId, registrationId } = req.params
@@ -102,6 +111,18 @@ class PeopleController {
         try {
             await database.Registrations.destroy( { where: { id: Number(registrationId) } });
             res.status(201).json({ message: `registration ${registrationId} deleted` })  
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
+
+    static async restoreRegistration( req, res ) {
+        const { studentId, registrationId } = req.params
+        try {
+            await database.Registrations.restore( { where: {
+                id: Number(registrationId),
+            student_id: Number(studentId) } });
+            return res.status(200).json({ message: `Registration id: ${registrationId} was restored!` })
         } catch (error) {
             res.status(500).json(error.message)
         }

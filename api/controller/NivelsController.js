@@ -47,7 +47,16 @@ class NivelsController {
         const { id } = req.params
         try {
             await database.Nivels.destroy( { where: { id: Number(id) } });
-            res.status(201).json({ message: "Person deleted!" })  
+            res.status(201).json({ message: "Nivel deleted!" })  
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
+    static async restoreNivel(req, res) {
+        const { id } = req.params
+        try {
+            await database.Nivels.restore({ where: { id: Number(id) } })
+            return res.status(200).json({ message: `Nivel id: ${id} restored!`})
         } catch (error) {
             res.status(500).json(error.message)
         }
