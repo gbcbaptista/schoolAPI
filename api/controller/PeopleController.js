@@ -137,6 +137,16 @@ class PeopleController {
             res.status(500).json(error.message)
         }
     }
+    static async getRegistrations( req, res ) {
+        const { studentId } = req.params
+        try {
+            const person = await database.People.findOne({ where: { id: Number(studentId)}})
+            const registrations = await person.getConfirmedRegistrations()
+            return res.status(200).json(registrations)
+        } catch (error) {
+            res.status(500).json(error.message)
+        }
+    }
 }
 
 module.exports = PeopleController;
