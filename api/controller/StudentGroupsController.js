@@ -9,7 +9,6 @@ class StudentGroupsController {
         start_date || end_date ? where.start_date = {} : null
         start_date ? where.start_date[Op.gte] = start_date : null
         end_date ? where.start_date[Op.lte] = end_date : null
-        console.log(where)
         try {
             const allStudentGroups = await database.StudentGroups.findAll({ where })
             return res.status(200).json(allStudentGroups);
@@ -17,16 +16,6 @@ class StudentGroupsController {
             return res.status(500).json(error.message);
         }
     }
-
-    // static async getAllStudentGroups(req, res) {
-    //     try {
-    //         const allStudentGroups = await database.StudentGroups.findAll()
-    //         return res.status(200).json(allStudentGroups);
-    //     } catch (error) {
-    //         return res.status(500).json(error.message);
-    //     }
-        
-    // }
 
     static async getStudentGroupById(req, res) {
         const { id } = req.params
